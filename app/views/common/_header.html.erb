@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <%if user_signed_in?%>
+        <li class="nav-item">
+            <%= link_to "Credentials", credentials_path, class: "nav-link"%>
+        </li>
+
+        <li class="nav-item">
+            <%= link_to "Edit profile", edit_user_registration_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%= button_to "Sign out", destroy_user_session_path, method: :delete ,data: { turbolinks: false } ,class: "nav-link"%>
+        </li>
+        <!-- need to add action/url, method!-->
+        <form class="d-flex" role="search"  style="margin-left:30px;" action = "/credentials/search" method = "get">
+            <input class="form-control me-2" type="search" name = "search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <%else%>
+        <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Log in", new_user_session_path, class: "nav-link"%>
+        </li>
+         <li class="nav-item">
+            <%= link_to "Sign up", new_user_registration_path, class: "nav-link"%>
+        </li>
+
+        <%end%>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
